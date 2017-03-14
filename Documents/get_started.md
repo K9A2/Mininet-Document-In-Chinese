@@ -116,4 +116,16 @@ mininet/util/install.sh -fw
 ```
 以上命令会安装OpenFlow推荐的软交换机、控制器以及Wireshark分析器。
 
+## 方法四：升级现有的Mininet
+升级方式多种多样。如果你不曾改动Mininet，你通常可以这么做：
+```bash
+cd mininet
+git fetch
+git checkout master   # 或者一个具体的版本号，如2.2.1
+git pull
+sudo make install
+```
 
+你可以用**sudo make develop**来代替**sudo make install**，以便你能从**/usr/python/...**建立符号链接到你的源代码文件夹中。
+
+注意，这种方法只会升级Mininet本体。其他组件，如Open vSwitch等，则可以根据需要分开升级。
