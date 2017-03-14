@@ -77,3 +77,43 @@ sudo mn --test pingall
 ---
 
 ## 方法三：通过软件包的方式进行安装
+如果你正在使用较新版本的Ubuntu发行版，你可以通过软件包的形式来安装Mininet。注意，即使这种方式可能会在你的电脑上安装一个非最新版本的Mininet，但这也是一种非常方便的方法。
+
+首先，如果你正在或者已经从一个较久的版本（如1.0）升级，或者使用一个不在**/usr/local**目录中编译安装的Open vSwitch，你确保在升级前就把旧版的Mininet和Open vSwitch从**/usr/local**都卸载了：
+```bash
+sudo rm -rf /usr/local/bin/mn /usr/local/bin/mnexec \
+    /usr/local/lib/python*/*/*mininet* \
+    /usr/local/bin/ovs-* /usr/local/sbin/ovs-*
+```
+
+然后，确定你的操作系统的版本：
+```bash
+lsb_release -a
+```
+
+再者，对应你的操作系统的版本号，只用下面的命令中的其中之一来安装Mininet基本软件包：
+```bash
+Mininet 2.1.0 on Ubuntu 14.10: sudo apt-get install mininet
+Mininet 2.1.0 on Ubuntu 14.04: sudo apt-get install mininet
+Mininet 2.0.0 on Ubuntu 12.04: sudo apt-get install mininet/precise-backports
+```
+
+然后用如下命令来测试Mininet是否成功安装：
+```bash
+sudo mn --test pingall
+```
+
+如果Mininet报告Open vSwitch出现问题，你就可能需要重新编译它的内核：
+```bash
+sudo dpkg-reconfigure openvswitch-datapath-dkms
+sudo service openflow-switch restart
+```
+
+如果你想跟随指南来学习，你会需要安装一些其他软件：
+```bash
+git clone git://github.com/mininet/mininet
+mininet/util/install.sh -fw
+```
+以上命令会安装OpenFlow推荐的软交换机、控制器以及Wireshark分析器。
+
+
