@@ -175,7 +175,11 @@ mininet> h1 kill %python
 mininet> exit
 ```
 
-<h3 id="">
+<h3 id="1.6">清理运行文件</h3>
+如果Mininet因为某些原因崩溃了，请清理相关的冗余文件：
+```bash
+$ sudo mn -c
+```
 
 <h2 id="2">第二部分：高级启动选项</h2>
 
