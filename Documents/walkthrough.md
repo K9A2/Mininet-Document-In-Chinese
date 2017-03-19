@@ -280,6 +280,44 @@ $ sudo mn --custom ~/mininet/custom/topo-2sw-2host.py --topo mytopo --test pinga
 ```
 
 </h3 id="2.6">ID = MAC</h3>
+默认地，主机在启动的时候会被随机指派MAC地址。这样会使debug变得更加困难，因为每一次启动Mininet是，MAC地址都会被改变，故某些主机之间的控制流会变得难以传输。
+
+**--mac**选项是十分有用的，并且能把主机的MAC地址和IP地址设置成为简单的、唯一的、便于阅读的ID。
+
+变换之前：
+```bash
+$ sudo mn
+...
+mininet> h1 ifconfig
+h1-eth0  Link encap:Ethernet  HWaddr f6:9d:5a:7f:41:42  
+          inet addr:10.0.0.1  Bcast:10.255.255.255  Mask:255.0.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:6 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:392 (392.0 B)  TX bytes:392 (392.0 B)
+mininet> exit
+```
+
+变换之后：
+```bash
+$ sudo mn --mac
+...
+mininet> h1 ifconfig
+h1-eth0  Link encap:Ethernet  HWaddr 00:00:00:00:00:01
+          inet addr:10.0.0.1  Bcast:10.255.255.255  Mask:255.0.0.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+mininet> exit
+```
+
+*相反，向Linux报告的交换机数据端口仍然是随机的。这是因为你能对一个数据端口用OpenFlow来指定端口，正如在FAQ中提到的那样。这是一个你可能会忽略的小细节。*
+
+<h3 id="2.6">用XTerm进行显示</h3>
+
 
 <h2 id="3">第三部分：Mininet命令行界面（CLI）中的命令</h2>
 
