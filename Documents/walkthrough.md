@@ -161,6 +161,21 @@ mininet> pingall
 ```
 
 <h3 id="1.5">运行一个web服务器以及客户端</h3>
+记住，**ping**操作并不是你在主机上能进行的唯一操作！Mininet允许你在Linux系统（或者VM）以及对应的文件系统中所能获得的所有命令或者程序。你也能输入任何**bash**命令，包括作业控制命令（**$**，**jobs**等等）。
+
+下一步，尝试着在**h1**上运行一个简单的HTTP服务器，并从**h2**中发送一个HTTP请求，然后关闭这个服务器：
+```bash
+mininet> h1 python -m SimpleHTTPServer 80 &
+mininet> h2 wget -O - h1
+...
+mininet> h1 kill %python
+```
+最后退出CLI：
+```bash
+mininet> exit
+```
+
+<h3 id="">
 
 <h2 id="2">第二部分：高级启动选项</h2>
 
