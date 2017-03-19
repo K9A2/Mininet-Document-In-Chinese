@@ -209,7 +209,19 @@ $ sudo mn --test pingall --topo linear,4
 ```
 能使用参数化的网络是Mininet最有用最强大的特性。
 
-<h3 id="2.3"></h3>
+<h3 id="2.3">设置网络连接选项</h3>
+Mininet 2.0允许你设置连接选项，并且这些选项能够命令行中被自动地设定：
+```bash
+$ sudo mn --link tc,bw=10,delay=10ms
+mininet> iperf
+...
+mininet> h1 ping -c10 h2
+```
+如果每一段链路的延迟是10ms，由于ICMP请求走过了两段链路（一段去往交换机，另外一段去往目的主机），并且ICMP回复也走过了同样的链路，那么整个往返时延（RTT）就是40ms。
+
+*你可以用[Mininet的Python API](https://github.com/mininet/mininet/wiki/Introduction-to-Mininet)来自定义每一段链路，但现在，你更需要的是继续阅读我们的指南。*
+
+
 
 <h2 id="3">第三部分：Mininet命令行界面（CLI）中的命令</h2>
 
