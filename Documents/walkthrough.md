@@ -401,6 +401,31 @@ $ sudo mn
 mininet> help
 ```
 
+<h3 id="3.2">Python解释器</h3>
+如果Mininet命令的第一个词是**py**，那么这条命令就会用Python执行。这对于扩展Mininet的功能以及探查它的内部结构来说，是很方便的。每一个主机、交换机和控制器都有一个相关的“节点”对象。
+
+在Mininet CLI运行如下命令：
+```bash
+mininet> py 'hello ' + 'world'
+```
+打印可用的本地变量：
+```bash
+mininet> py locals()
+```
+然后，使用dir函数来查看节点可用的方法和属性：
+```bash
+mininet> py dir(s1)
+```
+你可以通过使用**help()**函数来查看节点上可用的函数的在线文档：
+```bash
+mininet> py help(h1) 
+(Press "q" to quit reading the documentation.)
+```
+你也可以得到变量的值：
+```bash
+mininet> py h1.IP()
+```
+
 <h2 id="4">第四部分：Python API 例子</h2>
 
 <h2 id="5">第五部分：看完指南了！</h2>
