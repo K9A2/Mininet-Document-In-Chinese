@@ -1,3 +1,5 @@
+> 都大三了，实验室的小伙伴们还没有考过四六级诶
+
 # 工作流示例
 
 Mininet 能让你便捷地对一个 SDN 网络进行创建、交互和共享操作，并且让你方便地在硬件上运行此网络。本文阐明了基本的 Mininet 的工作流示例，并且很多额外的资料会被放在 [Mininet指南](/Documents/walkthrough.md)、[OpenFlow 教程](https://github.com/mininet/openflow-tutorial/wiki) 以及 Mininet[文档](https://github.com/mininet/mininet/wiki/Documentation)。

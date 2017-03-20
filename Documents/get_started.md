@@ -1,3 +1,5 @@
+> 都大三了，实验室的小伙伴们还没有考过四六级诶
+
 # 下载安装 Mininet
 
 下载安装 Mininet 最简单的方式就是 **下载一个已经封装好的Mininet/Ubuntu虚拟机镜像（Mininet VM）**。VM 包含了 Mininet 自身、所有 Openflow 二进制文件以及预先安装好的各种工具，和已经为支持大型 Mininet 网络而修改过的 Linux 内核。
