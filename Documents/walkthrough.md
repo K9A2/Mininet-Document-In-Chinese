@@ -438,6 +438,12 @@ mininet> link s1 h1 down
 mininet> link s1 h1 up
 ```
 
+<h3 id="3.4">用XTerm进行显示</h3>
+要用一个xterm窗口来显示h1和h2（的相关信息）：
+```bash
+mininet> xterm h1 h2
+```
+
 <h2 id="4">第四部分：Python API 例子</h2>
 
 <h2 id="5">第五部分：看完指南了！</h2>
