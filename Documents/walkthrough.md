@@ -29,7 +29,7 @@
     + [联网与断网](#3.3)
     + [用XTerm进行显示](#3.4)
 + [第四部分：Python API 例子](#4)
-    + [SSH 虚拟客户端](#4.1)
+    + [SSH守护进程](#4.1)
 + [第五部分：看完指南了！](#5)
     + [完全掌握Mininet所需要做的其他事](#5.1)
 + [附录](#6)
@@ -440,11 +440,35 @@ mininet> link s1 h1 up
 
 <h3 id="3.4">用XTerm进行显示</h3>
 要用一个xterm窗口来显示h1和h2（的相关信息）：
+
 ```bash
 mininet> xterm h1 h2
 ```
 
 <h2 id="4">第四部分：Python API 例子</h2>
+Mininet源代码文件夹中有一个[样例文件夹](https://github.com/mininet/mininet/tree/master/examples)，包括了许多如何使用Mininet的Python API的例子，以及许多能被整合进Mininet本体的有用代码。
+
+*注意：正如在本指南开头所提醒的一样，本指南已经假定你正在使用包含了所有东西的MininetVM，或者包括了所有相关程序的本地（native）安装。而完整的本地包含用OpenFlow实现的控制器**controller**。如果还没有安装的话，请用**install.sh -f**命令进行完整安装。*
+
+<h3 id="4.1">SSH守护进程</h3>
+一个在每一个主机上都运行一个SSH守护进程的例子如下：
+
+```bash
+$ sudo ~/mininet/examples/sshd.py
+```
+在另外一个终端中，你可以用SSH登录任意主机，并运行命令：
+
+```bash
+$ ssh 10.0.0.1
+$ ping 10.0.0.2
+...
+$ exit
+```
+退出登录：
+```bash
+$ exit
+```
+你会想要在看完[Mininet简介](https://github.com/mininet/mininet/wiki/Introduction-to-Mininet)之后再回来看这些介绍Python API的例子。
 
 <h2 id="5">第五部分：看完指南了！</h2>
 
