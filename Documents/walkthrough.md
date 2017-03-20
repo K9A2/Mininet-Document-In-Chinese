@@ -31,8 +31,8 @@
 + [第四部分：Python API 例子](#4)
     + [SSH守护进程](#4.1)
 + [第五部分：看完指南了！](#5)
-    + [完全掌握Mininet所需要做的其他事](#5.1)
-+ [附录](#6)
+    + [完全掌握Mininet所需要做的事](#5.1)
++ [附录：补充信息](#6)
     + [使用远程控制器](#6.1)
     + [NOX控制器](#6.2)
 
@@ -471,5 +471,67 @@ $ exit
 你会想要在看完[Mininet简介](https://github.com/mininet/mininet/wiki/Introduction-to-Mininet)之后再回来看这些介绍Python API的例子。
 
 <h2 id="5">第五部分：看完指南了！</h2>
+恭喜！你已经看完Mininet指南了。自信地去尝试拓扑、新控制器或者检出最新版本的源代码吧。
 
-<h2 id="6">附录</h2>
+<h3 id="5.1">完全掌握Mininet所需要做的事</h3>
+如果你觉得还不够，你完全可以去看我们的[OpenFlow教程](https://github.com/mininet/openflow-tutorial/wiki)。
+
+虽然你已经学到了很多使用Mininet CLI的技巧，然而，当你掌握了它的Python API之后，Mininet会变得越来越有用越来越强大。在[Mininet简介](https://github.com/mininet/mininet/wiki/Introduction-to-Mininet)提供了对Mininet本体和其Python API的介绍。
+
+如果你正在想怎么样才能用上一个远程控制器（就是不受Mininet控制的控制器），方法就在下面。
+
+<h2 id="6">附录：补充信息</h2>
+这些并不是必须要看的内容。然而，当你浏览完之后，也许会有用。
+
+<h3 id="6.1">使用远程控制器<h3>
+*注意：这并不是本指南的默认部分；当你的控制器在不在VM中的时候，如在VM中的主机，或者在另外一台物理PC上，这一部才会变的有用。OpenFlow教程用**controller --remote**来启动一个，用POX、NOX、Beacon或者Floodlight来控制的，简单的，用于学习的交换机。*
+
+当你启动Mininet的时候，每一个主机都会被链接到一个远程控制器上。这个控制器可以在VM中，可以不在VM中，也可以在你的本地机器上，甚至世界上的任何地方。
+
+如果你在你的机子上已经安装好了控制器和开发工具（如Eclipse），或者你想要测试一个在不同的主机（甚至在云上）的控制器，那么本教程就是十分有用的。
+
+如果你想要尝试（使用以远程控制器），把以下命令中的IP地址和监听端口换成控制器所在的IP地址和端口号：
+```bash
+$ sudo mn --controller=remote,ip=[controller IP],port=[controller listening port]
+```
+例如，要运行POX自带的交换机，你可以在其中某个窗口这么做：
+```bash
+$ cd ~/pox
+$ ./pox.py forwarding.l2_learning
+```
+而在另一个窗口，启动Mininet并连接到“远程”控制器（实际上是在本地运行的，只不过不受Mininet控制）：
+```bash
+$ sudo mn --controller=remote,ip=127.0.0.1,port=6633
+```
+注意：这些实际上是默认的IP地址和端口号。
+
+如果你进行了某些产生数据流量的操作（如：**h1 ping h2**），你应该能在POX控制器的窗口看到，交换机已经连接上了，并且流表项已经下发。
+
+只要你启动这些控制器，并指明**remote**选项并给出正确的IP地址和端口号，许多OpenFlow控制器能在Mininet中运用。
+
+<h3 id="6.2">NOX Classic</h3>
+Mininet的默认安装方式（用**util/install.sh -a**安装）并不包括POX控制器。如果你想要安装它，请用：**sudo ~/mininet/util/install.sh -x**。
+
+注意，NOX控制器是不建议使用的，Mininet以后可能不会再支持它。
+
+要在运行了NOX程序pyswitch的NOX控制器上运行回归测试，那么**NOX_CORE_DIR**必须设定为包含有NOX可执行文件的目录。
+
+首先，确认NOX是否在运行：
+```bash
+$ cd $NOX_CORE_DIR
+$ ./nox_core -v -i ptcp:
+```
+按Ctrl + C来结束NOX进程，然后测试NOX的pyswitch是否在运行：
+```bash
+$ cd
+$ sudo -E mn --controller=nox,pyswitch --test pingpair
+```
+注意，**--controller**选项有一个便于指明控制器选项的写法（在本例中，**nox**运行**pyswitch**）。
+
+在NOX控制器加载文件，以及交换机连接的时候，会有几秒钟的延迟，但在此过程中，已经完成了**ping**操作。
+
+注意，现在**mn**已经可以被**sudo -E**所调用了，用来维护**NOX\_CORE\_DIR**环境变量。如果你是在远程调用NOX控制器，那么参数**-E**是不必要的。另外，你可以用**visudo**来更改**/etc/sudoers**中的第一行，并把其中的**env_reseet**改为：
+```bash
+Defaults !env_reset
+```
+那么，在运行**sudo**的时候，环境变量就不会被改变了。
