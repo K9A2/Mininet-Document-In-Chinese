@@ -22,7 +22,10 @@
 本部分为 Mininet 官方文档中的实战部分，分五部分介绍了如何使用 Mininet 进行开发。
 
 # 版权公告
+
 英文版本版权属 [Mininet团队](http://mininet.org) 所有，作者只提供文档的翻译文章。
+
+文档的GitHub地址为：https://github.com/K9A2/Mininet-Document-In-Chinese。小伙伴们觉得哪里有翻译的不好的地方，可以直接fork一个新分支。
 
 参照本文档进行开发的使用者，需对参照使用本文档所产生的一切后果负责。
 
