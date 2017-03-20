@@ -7,8 +7,6 @@
 + 方法三：通过软件包的方式进行安装
 + 方法四：升级现有的 Mininet
 
----
-
 ## 方法一：通过 Mininet 虚拟机镜像安装（十分方便，强烈推荐）
 
 通过虚拟机镜像进行安装是最容易和最傻瓜的 Mininet 的安装方式，而这也是我们推荐这种方法的原因。
@@ -24,8 +22,6 @@
 （另外，除了以上资源，我们还特意准备了一些[常见问题的解答](http://mininet.org/faq)，以及可供你随时查看的[Mininet 文档](http://mininet.org/docs)）
 
 在你完成了 [Mininet 指南](http://mininet.org/walkthrough)上所有的教程之后，你应该能很清楚地指导 Mininet 是什么以及有什么用了。如果你对 OpenFlow 和软件定义网络（SDN）感兴趣，你也可以一并完成 [OpenFlow 教程](https://github.com/mininet/openflow-tutorial/wiki)。
-
----
 
 ## 方法二：通过源代码来进行本地安装
 
@@ -75,8 +71,6 @@ sudo mn --test pingall
 ```
 
 然后进行方法一中的第3-5步。如果你遇到了任何问题，首先到以下链接中 [FAQ](http://mininet.org/faq)、[Documentation](http://mininet.org/docs) 以及 [邮件列表](https://mailman.stanford.edu/pipermail/mininet-discuss/) 看看是否有类似的问题，以及相应的解决方案。如果这些都没有用并且你不能自行解决此问题（即使包括来自 Google 的帮助），你可以在 [mininet-discuss](https://mailman.stanford.edu/mailman/listinfo/mininet-discuss) 中要求协助。
-
----
 
 ## 方法三：通过软件包的方式进行安装
 如果你正在使用较新版本的 Ubuntu 发行版，你可以通过软件包的形式来安装 Mininet。注意，即使这种方式可能会在你的电脑上安装一个非最新版本的 Mininet，但这也是一种非常方便的方法。
