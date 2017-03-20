@@ -21,7 +21,7 @@
     + [ID = MAC](#2.6)
     + [用XTerm进行显示](#2.7)
     + [其他交换机类型](#2.8)
-    + [Mininet Benchmark](#2.9)
+    + [Mininet基准测试](#2.9)
     + [Namespace中的一切](#2.10)
 + [第三部分：Mininet命令行界面（CLI）中的命令](#3)
     + [显示设置](#3.1)
@@ -370,6 +370,14 @@ $ sudo mn --switch user --test iperf
 ```bash
 $ sudo mn --switch ovsk --test iperf
 ```
+
+<h3 id="2.9">Mininet基准测试</h3>
+要记录建立和拆除网络拓扑的时间，运行“none”测试：
+```bash
+$ sudo mn --test none
+```
+
+<h3 id="2.10"></h3>
 
 <h2 id="3">第三部分：Mininet命令行界面（CLI）中的命令</h2>
 
