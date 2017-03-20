@@ -426,6 +426,18 @@ mininet> py help(h1)
 mininet> py h1.IP()
 ```
 
+<h3 id="3.3">联网与断网</h3>
+对于默认的容错测试而言，能把某段链路单独联网或者断网是非常有用的。
+
+要关闭某一段虚拟以太网链路（双方均关闭）：
+```bash
+mininet> link s1 h1 down
+```
+你可以发现，OpenFlow Port Status Change（OpenFlow端口改变）通知就会被产生。而要开启这段链路：
+```bash
+mininet> link s1 h1 up
+```
+
 <h2 id="4">第四部分：Python API 例子</h2>
 
 <h2 id="5">第五部分：看完指南了！</h2>
